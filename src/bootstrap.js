@@ -78,10 +78,17 @@ const startCore = () => {
 
 const startUpdate = () => {
   exeDirInstallerSeed = join(paths.getExeDir, "installer.db")
+  
+  exeDirUpdater = join(paths.getExeDir, "updater")
 
   // Move installer.db
   if (existsSync(exeDirInstallerSeed)) {
     renameSync(exeDirInstallerSeed, join(paths.getInstallPath, "installer.db"))
+  }
+
+  // Move reUpdater to root for Velopack
+  if (paths.getExeDir.startsWith('current') && existsSync(exeDirUpdater)) {
+    renameSync(exeDirUpdater, join(paths.getInstallPath, "updater"))
   }
 
   const urls = [

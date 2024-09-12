@@ -22,7 +22,7 @@ exports.init = () => {
   userDataVersioned = join(userData, buildInfo.version);
 
   exeDir = dirname(app.getPath('exe'));
-  if (basename(exeDir).startsWith('app-')) installPath = join(exeDir, '..');
+  if (basename(exeDir).startsWith('app-') || basename(exeDir).startsWith('current')) installPath = join(exeDir, '..');
 
   moduleData = buildInfo.newUpdater ? join(userData, 'module_data') : join(userDataVersioned, 'modules');
   resourcesPath = join(process.resourcesPath);
